@@ -12,8 +12,8 @@ const Layout: FC<LayoutProps> = ({ children }) => {
   // }
   return (
     <div className="wrap overflow-hidden px-4 py-6 h-full min-h-screen">
-      <div>
-        <main className="px-4 md:px-8 h-full">{children}</main>
+      <div className="min-h-full">
+        <main className="h-full">{children}</main>
         <Navigator />
       </div>
     </div>
