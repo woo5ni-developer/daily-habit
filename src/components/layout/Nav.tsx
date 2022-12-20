@@ -5,7 +5,7 @@ import { navList } from '../../data/response'
 const Nav: FC = () => {
   const navigate = useNavigate()
   const handlePage = (link: string): void => {
-    navigate(`/${link}`)
+    navigate(link)
   }
   return (
     <div>
