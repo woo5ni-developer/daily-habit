@@ -1,9 +1,11 @@
 import React, { FC } from 'react'
 import HabitTerm from '../components/HabitTerm'
+import InputField from '../components/InputField'
 
 const Set: FC = () => {
   return (
-    <div className="text-red-600">Set
+    <div>
+      <InputField />
       <HabitTerm />
     </div>
   )
