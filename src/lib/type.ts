@@ -3,3 +3,8 @@ export interface NavType {
   title: string
   link: string
 }
+
+export interface ColorType {
+  id: number
+  color: string
+}
