@@ -3,10 +3,11 @@ import { ColorType } from '../lib/type'
 
 interface ButtonColorFieldProps {
   data: ColorType[]
+  handleClick: (color: ColorType) => void
 }
-const ButtonColorField: FC<ButtonColorFieldProps> = ({ data }) => {
-  // logic
 
+const ButtonColorField: FC<ButtonColorFieldProps> = ({ data, handleClick }) => {
+  // logic
   // view
   return (
     <ul className="grid grid-cols-8 gap-2.5 px-4">
@@ -15,8 +16,9 @@ const ButtonColorField: FC<ButtonColorFieldProps> = ({ data }) => {
           <button
             type="button"
             className="w-full h-full rounded-full"
-            aria-label="색상선택"
-            style={{ background: color.color }}></button>
+            aria-label="색상 선택"
+            style={{ background: color.color }}
+            onClick={() => handleClick(color)}></button>
         </li>
       ))}
     </ul>
