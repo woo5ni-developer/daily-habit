@@ -9,7 +9,7 @@ const Set: FC = () => {
     console.log(color.color)
   }
   return (
-    <div className="text-red-600">
+    <div>
       Set
       <ButtonColorField data={colorList} handleClick={SelectColor} />
       <HabitTerm />
