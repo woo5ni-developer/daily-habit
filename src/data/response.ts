@@ -9,7 +9,7 @@ export const navList: NavType[] = [
 ]
 
 export const colorList: ColorType[] = [
-  { id: 1, color: '#845EC2' },
+  { id: 1, color: '#4CFCE1' },
   { id: 2, color: '#D65DB1' },
   { id: 3, color: '#FF6F91' },
   { id: 4, color: '#FF9671' },
@@ -22,4 +22,5 @@ export const colorList: ColorType[] = [
   { id: 11, color: '#2C73D2' },
   { id: 12, color: '#B39CD0' },
   { id: 13, color: '#4D8076' },
+  { id: 14, color: '#845EC2' },
 ]
