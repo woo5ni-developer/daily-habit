@@ -24,7 +24,7 @@ const Nav: FC = () => {
           <button
             style={{ backgroundImage: `url(${nav.path})` }}
             className={`bg-no-repeat bg-center flex-1 ${
-              nav.title === 'Tracker' ? 'relative top-[-36px]' : ''
+              nav.title === 'Set' ? 'relative top-[-36px]' : ''
             }`}
             aria-label={nav.title}
             key={nav.id}
