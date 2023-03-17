@@ -2,8 +2,8 @@ import { ColorType, NavType } from '../lib/type'
 
 export const navList: NavType[] = [
   { id: 1, title: 'Home', link: '/', path: './images/icon/icon-nav-home.png' },
-  { id: 2, title: 'Set', link: '/set', path: './images/icon/icon-nav-set.png' },
-  { id: 3, title: 'Tracker', link: '/tracker', path: './images/icon/icon-nav-tracker.png' },
+  { id: 2, title: 'Tracker', link: '/tracker', path: './images/icon/icon-nav-tracker.png' },
+  { id: 3, title: 'Set', link: '/set', path: './images/icon/icon-nav-set.png' },
   { id: 4, title: 'Stats', link: '/stats', path: './images/icon/icon-nav-status.png' },
   { id: 5, title: 'Setting', link: '/setting', path: './images/icon/icon-nav-setting.png' },
 ]
