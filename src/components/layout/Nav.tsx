@@ -1,11 +1,18 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { navList } from '../../data/response'
 
 const Nav: FC = () => {
   const navigate = useNavigate()
-  const handlePage = (link: string): void => {
+  const [selectedMenuId, setSelectedMenuId] = useState<number | null>(() => {
+    const storedId = localStorage.getItem('selectedMenuId')
+    return storedId ? parseInt(storedId) : navList[0].id
+  })
+
+  const handlePage = (link: string, id: number): void => {
     navigate(link)
+    setSelectedMenuId(id)
+    localStorage.setItem('selectedMenuId', String(id))
   }
   const navStyles = {
     container: {
@@ -22,13 +29,15 @@ const Nav: FC = () => {
       <div style={navStyles.container} className="flex align-middle">
         {navList.map((nav) => (
           <button
-            style={{ backgroundImage: `url(${nav.path})` }}
+            style={{
+              backgroundImage: `url(${selectedMenuId === nav.id ? nav.selectedPath : nav.path})`,
+            }}
             className={`bg-no-repeat bg-center flex-1 ${
               nav.title === 'Set' ? 'relative top-[-36px]' : ''
             }`}
             aria-label={nav.title}
             key={nav.id}
-            onClick={() => handlePage(nav.link)}></button>
+            onClick={() => handlePage(nav.link, nav.id)}></button>
         ))}
       </div>
     </div>
