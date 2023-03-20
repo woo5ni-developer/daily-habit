@@ -1,11 +1,35 @@
 import { ColorType, NavType } from '../lib/type'
 
 export const navList: NavType[] = [
-  { id: 1, title: 'Home', link: '/', path: './images/icon/icon-nav-home.png' },
-  { id: 2, title: 'Tracker', link: '/tracker', path: './images/icon/icon-nav-tracker.png' },
-  { id: 3, title: 'Set', link: '/set', path: './images/icon/icon-nav-set.png' },
-  { id: 4, title: 'Stats', link: '/stats', path: './images/icon/icon-nav-status.png' },
-  { id: 5, title: 'Setting', link: '/setting', path: './images/icon/icon-nav-setting.png' },
+  {
+    id: 1,
+    title: 'Home',
+    link: '/',
+    path: './images/icon/icon-nav-home.png',
+    selectedPath: './images/icon/icon-nav-home-active.png',
+  },
+  {
+    id: 2,
+    title: 'Tracker',
+    link: '/tracker',
+    path: './images/icon/icon-nav-tracker.png',
+    selectedPath: './images/icon/icon-nav-tracker-active.png',
+  },
+  { id: 3, title: 'Set', link: '/set', path: './images/icon/icon-nav-set.png', selectedPath: '' },
+  {
+    id: 4,
+    title: 'Stats',
+    link: '/stats',
+    path: './images/icon/icon-nav-status.png',
+    selectedPath: './images/icon/icon-nav-status-active.png',
+  },
+  {
+    id: 5,
+    title: 'Setting',
+    link: '/setting',
+    path: './images/icon/icon-nav-setting.png',
+    selectedPath: './images/icon/icon-nav-setting-active.png',
+  },
 ]
 
 export const colorList: ColorType[] = [
