@@ -3,6 +3,7 @@ export interface NavType {
   title: string
   link: string
   path: string
+  selectedPath: string
 }
 
 export interface ColorType {
