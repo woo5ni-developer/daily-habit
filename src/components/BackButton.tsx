@@ -6,9 +6,14 @@ const BackButton: FC = () => {
   const goBack = (): void => {
     navigate(-1)
   }
+  const buttonBackgroundStyle = {
+    backgroundImage: 'url("./images/arrow-left.png")',
+    backgroundSize: '100% 100%',
+  }
   return (
     <button
-      className="absolute px-[24px] py-[35px] top-0 left-0 w-[11px] h-[18px] block"
+      style={buttonBackgroundStyle}
+      className="absolute top-[33px] left-[19px] w-[22px] h-[22px] block"
       onClick={goBack}>
       <span className="overflow-hidden inline-block relative z-[-1] border-0 w-px h-px">
         뒤로가기
