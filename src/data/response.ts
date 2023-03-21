@@ -1,5 +1,10 @@
-import { ColorType, NavType } from '../lib/type'
+import { ColorType, NavType, IconFieldType } from '../lib/type'
 
+//icon
+import { FaSwimmer } from 'react-icons/fa'
+import { GiMuscleUp } from 'react-icons/gi'
+
+//nav
 export const navList: NavType[] = [
   {
     id: 1,
@@ -32,6 +37,7 @@ export const navList: NavType[] = [
   },
 ]
 
+//color
 export const colorList: ColorType[] = [
   { id: 1, color: '#4CFCE1' },
   { id: 2, color: '#D65DB1' },
@@ -47,4 +53,33 @@ export const colorList: ColorType[] = [
   { id: 12, color: '#B39CD0' },
   { id: 13, color: '#4D8076' },
   { id: 14, color: '#845EC2' },
+]
+
+//icon
+export const iconList: IconFieldType[] = [
+  {
+    id: 0,
+    name: 'Swimmer',
+    icon: FaSwimmer,
+  },
+  {
+    id: 1,
+    name: 'MuscleUp',
+    icon: GiMuscleUp,
+  },
+  {
+    id: 3,
+    name: 'MuscleUp',
+    icon: GiMuscleUp,
+  },
+  {
+    id: 4,
+    name: 'MuscleUp',
+    icon: GiMuscleUp,
+  },
+  {
+    id: 5,
+    name: 'MuscleUp',
+    icon: GiMuscleUp,
+  },
 ]

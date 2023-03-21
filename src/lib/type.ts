@@ -1,3 +1,5 @@
+import { IconType } from 'react-icons'
+
 export interface NavType {
   id: number
   title: string
@@ -9,4 +11,10 @@ export interface NavType {
 export interface ColorType {
   id: number
   color: string
+}
+
+export interface IconFieldType {
+  id: number
+  name: string
+  icon: IconType
 }

@@ -1,9 +1,17 @@
-import React, { FC, useState } from 'react'
-import { FaSwimmer } from 'react-icons/fa'
-import { GiMuscleUp } from 'react-icons/gi'
+import React, { FC } from 'react'
+import { IconContext } from 'react-icons'
+import { IconFieldType } from '../lib/type'
 
-const ButtonColorField: FC = () => {
+interface ButtonIconFieldProps {
+  data: IconFieldType[]
+  handleClick: (icon: IconFieldType) => void
+}
+
+const ButtonColorField: FC<ButtonIconFieldProps> = ({ data, handleClick }) => {
   // logic
+  const BtnHandler = (icon: IconFieldType): void => {
+    handleClick(icon)
+  }
   const iconField = {
     container: {
       width: '100%',
@@ -16,13 +24,18 @@ const ButtonColorField: FC = () => {
   }
   // view
   return (
-    <div style={iconField.container} className="writingMode-lr">
-      <button type="button" className="w-[30px] h-[30px] rounded-[10px] bg-red-500">
-        <FaSwimmer className="w-full h-full" />
-      </button>
-      <button type="button" className="w-[30px] h-[30px] rounded-[10px] bg-red-500">
-        <GiMuscleUp className="w-full h-full" />
-      </button>
+    <div style={iconField.container}>
+      {data.map((icon, idx) => (
+        <button
+          key={idx}
+          type="button"
+          className="w-[30px] h-[30px] rounded-[10px] bg-red-500"
+          onClick={() => BtnHandler(icon)}>
+          <IconContext.Provider value={{ size: '30px' }}>
+            {React.createElement(icon.icon)}
+          </IconContext.Provider>
+        </button>
+      ))}
     </div>
   )
 }

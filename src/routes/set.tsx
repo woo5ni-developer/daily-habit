@@ -5,20 +5,23 @@ import InputField from '../components/InputField'
 import Title from '../components/Title'
 import BackButton from '../components/BackButton'
 import Cycle from '../components/Cycle'
-import { colorList } from '../data/response'
-import { ColorType } from '../lib/type'
+import { colorList, iconList } from '../data/response'
+import { ColorType, IconFieldType } from '../lib/type'
 import ButtonIconField from '../components/ButtonIconField'
 
 const Set: FC = () => {
   const SelectColor = (color: ColorType): void => {
     console.log(color.color)
   }
+  const SelectIcon = (icon: IconFieldType): void => {
+    console.log(icon.name)
+  }
   return (
     <div>
       <Title text="New Habit" />
       <BackButton />
       <ButtonColorField data={colorList} handleClick={SelectColor} />
-      <ButtonIconField />
+      <ButtonIconField data={iconList} handleClick={SelectIcon} />
       <InputField />
       <Cycle />
       <HabitTerm />
