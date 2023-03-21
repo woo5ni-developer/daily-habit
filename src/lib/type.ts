@@ -9,3 +9,9 @@ export interface ColorType {
   id: number
   color: string
 }
+
+export interface RadioType {
+  id: number
+  text: string
+  path: string
+}

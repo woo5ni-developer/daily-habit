@@ -5,8 +5,8 @@ import InputField from '../components/InputField'
 import Title from '../components/Title'
 import BackButton from '../components/BackButton'
 import Cycle from '../components/Cycle'
-import { colorList } from '../data/response'
-import { ColorType } from '../lib/type'
+import { colorList, radioList } from '../data/response'
+import { ColorType, RadioType } from '../lib/type'
 
 const Set: FC = () => {
   const SelectColor = (color: ColorType): void => {
@@ -18,7 +18,7 @@ const Set: FC = () => {
       <BackButton />
       <ButtonColorField data={colorList} handleClick={SelectColor} />
       <InputField />
-      <Cycle />
+      <Cycle data={radioList} />
       <HabitTerm />
     </div>
   )

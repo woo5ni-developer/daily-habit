@@ -1,4 +1,4 @@
-import { ColorType, NavType } from '../lib/type'
+import { ColorType, NavType, RadioType } from '../lib/type'
 
 export const navList: NavType[] = [
   { id: 1, title: 'Home', link: '/', path: './images/icon/icon-nav-home.png' },
@@ -23,4 +23,11 @@ export const colorList: ColorType[] = [
   { id: 12, color: '#B39CD0' },
   { id: 13, color: '#4D8076' },
   { id: 14, color: '#845EC2' },
+]
+
+export const radioList: RadioType[] = [
+  { id: 1, text: 'Morning', path: './images/icon/icon-radio-sun.png' },
+  { id: 2, text: 'Evening', path: './images/icon/icon-radio-evening.png' },
+  { id: 3, text: 'Night', path: './images/icon/icon-radio-night.png' },
+  { id: 4, text: 'Always', path: './images/icon/icon-radio-infinite.png' },
 ]
