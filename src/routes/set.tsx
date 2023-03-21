@@ -7,6 +7,7 @@ import BackButton from '../components/BackButton'
 import Cycle from '../components/Cycle'
 import { colorList } from '../data/response'
 import { ColorType } from '../lib/type'
+import ButtonIconField from '../components/ButtonIconField'
 
 const Set: FC = () => {
   const SelectColor = (color: ColorType): void => {
@@ -17,6 +18,7 @@ const Set: FC = () => {
       <Title text="New Habit" />
       <BackButton />
       <ButtonColorField data={colorList} handleClick={SelectColor} />
+      <ButtonIconField />
       <InputField />
       <Cycle />
       <HabitTerm />
