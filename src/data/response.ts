@@ -10,30 +10,31 @@ export const navList: NavType[] = [
     id: 1,
     title: 'Home',
     link: '/',
-    path: './images/icon/icon-nav-home.png',
-    selectedPath: './images/icon/icon-nav-home-active.png',
+    pathName: 'home',
   },
   {
     id: 2,
     title: 'Tracker',
     link: '/tracker',
-    path: './images/icon/icon-nav-tracker.png',
-    selectedPath: './images/icon/icon-nav-tracker-active.png',
+    pathName: 'tracker',
   },
-  { id: 3, title: 'Set', link: '/set', path: './images/icon/icon-nav-set.png', selectedPath: '' },
+  {
+    id: 3,
+    title: 'Set',
+    link: '/set',
+    pathName: 'set',
+  },
   {
     id: 4,
     title: 'Stats',
     link: '/stats',
-    path: './images/icon/icon-nav-status.png',
-    selectedPath: './images/icon/icon-nav-status-active.png',
+    pathName: 'stats',
   },
   {
     id: 5,
     title: 'Setting',
     link: '/setting',
-    path: './images/icon/icon-nav-setting.png',
-    selectedPath: './images/icon/icon-nav-setting-active.png',
+    pathName: 'setting',
   },
 ]
 
@@ -79,6 +80,21 @@ export const iconList: IconFieldType[] = [
   },
   {
     id: 5,
+    name: 'MuscleUp',
+    icon: GiMuscleUp,
+  },
+  {
+    id: 6,
+    name: 'MuscleUp',
+    icon: GiMuscleUp,
+  },
+  {
+    id: 7,
+    name: 'MuscleUp',
+    icon: GiMuscleUp,
+  },
+  {
+    id: 8,
     name: 'MuscleUp',
     icon: GiMuscleUp,
   },
