@@ -30,9 +30,9 @@ const ButtonColorField: FC<ButtonIconFieldProps> = ({ data, handleClick }) => {
         <button
           key={idx}
           type="button"
-          className="w-[30px] h-[30px] rounded-[10px] bg-red-500"
+          className="w-[30px] h-[30px] rounded-[10px]"
           onClick={() => BtnHandler(icon)}>
-          <IconContext.Provider value={{ size: '30px' }}>
+          <IconContext.Provider value={{ size: '30px', style: { padding: '3px' } }}>
             {React.createElement(icon.icon)}
           </IconContext.Provider>
         </button>
