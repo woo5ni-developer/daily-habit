@@ -16,14 +16,15 @@ const ButtonColorField: FC<ButtonIconFieldProps> = ({ data, handleClick }) => {
     container: {
       width: '100%',
       display: 'grid',
-      gridTemplateColumns: 'repeat(4, 1fr)',
-      gridTemplateRows: 'repeat(9, 1fr)',
+      gridTemplateColumns: 'repeat(9, 1fr)',
+      gridTemplateRows: 'repeat(4, 1fr)',
       gap: '6px',
-      'writing-mode': 'vertical-lr',
+      gridAutoFlow: 'column',
     },
   }
   // view
   return (
+    //
     <div style={iconField.container}>
       {data.map((icon, idx) => (
         <button
