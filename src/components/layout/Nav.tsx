@@ -1,18 +1,15 @@
-import React, { FC, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { FC, useEffect, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { navList } from '../../data/response'
 
 const Nav: FC = () => {
   const navigate = useNavigate()
-  const [selectedMenuId, setSelectedMenuId] = useState<number | null>(() => {
-    const storedId = localStorage.getItem('selectedMenuId')
-    return storedId ? parseInt(storedId) : navList[0].id
-  })
+  const location = useLocation()
 
-  const handlePage = (link: string, id: number): void => {
+  const [urlPath, setUrlPath] = useState('')
+
+  const handlePage = (link: string): void => {
     navigate(link)
-    setSelectedMenuId(id)
-    localStorage.setItem('selectedMenuId', String(id))
   }
   const navStyles = {
     container: {
@@ -24,20 +21,27 @@ const Nav: FC = () => {
       backgroundSize: '100% auto',
     },
   }
+
+  useEffect(() => {
+    const pathname = location.pathname.replace('/', '') || 'home'
+    setUrlPath(pathname)
+  })
   return (
     <div className="fixed bottom-0 left-0 w-full px-[24px] pb-[30px] pt-[36px]">
       <div style={navStyles.container} className="flex align-middle">
         {navList.map((nav) => (
           <button
             style={{
-              backgroundImage: `url(${selectedMenuId === nav.id ? nav.selectedPath : nav.path})`,
+              backgroundImage: `url('/images/icon/${nav.pathName}${
+                urlPath === nav.pathName ? '-active' : ''
+              }.png')`,
             }}
             className={`bg-no-repeat bg-center flex-1 ${
               nav.title === 'Set' ? 'relative top-[-36px]' : ''
             }`}
             aria-label={nav.title}
             key={nav.id}
-            onClick={() => handlePage(nav.link, nav.id)}></button>
+            onClick={() => handlePage(nav.link)}></button>
         ))}
       </div>
     </div>
