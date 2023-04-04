@@ -1,7 +1,5 @@
 import React, { FC, useState } from 'react'
 import { ColorType } from '../lib/type'
-import { color } from '@mui/system'
-
 interface ButtonColorFieldProps {
   data: ColorType[]
   handleClick: (color: ColorType) => void
@@ -9,7 +7,7 @@ interface ButtonColorFieldProps {
 
 const ButtonColorField: FC<ButtonColorFieldProps> = ({ data, handleClick }) => {
   // logic
-  const [select, setSelect] = useState<ColorType>({ id: 1, color: '#4CFCE1' })
+  const [select, setSelect] = useState<ColorType>(data[0])
   const BtnHandler = (color: ColorType): void => {
     setSelect(color)
     handleClick(color)
