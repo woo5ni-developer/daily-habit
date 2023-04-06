@@ -31,7 +31,6 @@ const Cycle: FC<Props> = ({ data, color }) => {
             className="opacity-[0] absolute inset-0"
             name="when"
           />
-          {color}
           <RadioLabel
             style={{
               backgroundImage: `url(${data.path})`,
