@@ -26,8 +26,28 @@ export const colorList: ColorType[] = [
 ]
 
 export const radioList: RadioType[] = [
-  { id: 1, text: 'Morning', path: './images/icon/icon-radio-sun.png' },
-  { id: 2, text: 'Evening', path: './images/icon/icon-radio-evening.png' },
-  { id: 3, text: 'Night', path: './images/icon/icon-radio-night.png' },
-  { id: 4, text: 'Always', path: './images/icon/icon-radio-infinite.png' },
+  {
+    id: 1,
+    text: 'Morning',
+    path: './images/icon/icon-radio-sun.png',
+    bgWidth: '19px 18px',
+  },
+  {
+    id: 2,
+    text: 'Evening',
+    path: './images/icon/icon-radio-evening.png',
+    bgWidth: '22px 22px',
+  },
+  {
+    id: 3,
+    text: 'Night',
+    path: './images/icon/icon-radio-night.png',
+    bgWidth: '18px 18px',
+  },
+  {
+    id: 4,
+    text: 'Always',
+    path: './images/icon/icon-radio-infinite.png',
+    bgWidth: '22px 22px',
+  },
 ]

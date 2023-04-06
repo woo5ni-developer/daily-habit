@@ -14,4 +14,5 @@ export interface RadioType {
   id: number
   text: string
   path: string
+  bgWidth: string
 }
