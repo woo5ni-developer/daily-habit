@@ -1,8 +1,10 @@
+import { IconType } from 'react-icons'
+
 export interface NavType {
   id: number
   title: string
   link: string
-  path: string
+  pathName: string
 }
 
 export interface ColorType {
@@ -15,4 +17,9 @@ export interface RadioType {
   text: string
   path: string
   bgWidth: string
+}
+export interface IconFieldType {
+  id: number
+  name: string
+  icon: IconType
 }
