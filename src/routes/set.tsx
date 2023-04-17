@@ -12,13 +12,16 @@ const Set: FC = () => {
   const SelectColor = (color: ColorType): void => {
     console.log(color.color)
   }
+  const radioHandler = (selectValue: string): void => {
+    console.log('selectValue ' + selectValue)
+  }
   return (
     <div>
       <Title text="New Habit" />
       <BackButton />
       <ButtonColorField data={colorList} handleClick={SelectColor} />
       <InputField />
-      <Cycle data={radioList} color={''} />
+      <Cycle data={radioList} SelectColor={SelectColor} radioHandler={radioHandler} />
       <HabitTerm />
     </div>
   )
