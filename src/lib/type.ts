@@ -12,6 +12,12 @@ export interface ColorType {
   color: string
 }
 
+export interface RadioType {
+  id: number
+  text: string
+  path: string
+  bgWidth: string
+}
 export interface IconFieldType {
   id: number
   name: string
