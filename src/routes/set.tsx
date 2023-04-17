@@ -17,7 +17,7 @@ const Set: FC = () => {
     console.log('selectValue ' + selectValue)
   }
   const SelectIcon = (icon: IconFieldType): void => {
-    console.log(icon.name)
+    console.log(icon.icon)
   }
   return (
     <div>
