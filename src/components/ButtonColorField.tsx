@@ -1,22 +1,37 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { ColorType } from '../lib/type'
-
 interface ButtonColorFieldProps {
   data: ColorType[]
+  handleClick: (color: ColorType) => void
 }
-const ButtonColorField: FC<ButtonColorFieldProps> = ({ data }) => {
-  // logic
 
+const ButtonColorField: FC<ButtonColorFieldProps> = ({ data, handleClick }) => {
+  // logic
+  const [select, setSelect] = useState<ColorType>(data[0])
+  const BtnHandler = (color: ColorType): void => {
+    setSelect(color)
+    handleClick(color)
+  }
   // view
   return (
     <ul className="grid grid-cols-8 gap-2.5 px-4">
       {data.map((color, idx) => (
-        <li key={idx} className="w-7.5 h-7.5">
+        <li key={idx} className="w-7.5 h-7.5 relative">
+          {select?.id === color.id && (
+            <i className="block w-full h-full rounded-full absolute" aria-label="색상 선택 됨">
+              <img
+                src="./images/icon-check.svg"
+                alt="체크 이미지"
+                className="w-full h-full rounded-full"
+              />
+            </i>
+          )}
           <button
             type="button"
             className="w-full h-full rounded-full"
-            aria-label="색상선택"
-            style={{ background: color.color }}></button>
+            aria-label="색상 선택"
+            style={{ background: color.color }}
+            onClick={() => BtnHandler(color)}></button>
         </li>
       ))}
     </ul>
