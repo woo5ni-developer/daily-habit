@@ -5,11 +5,10 @@ import Label from '../components/Label'
 
 interface CycleProps {
   data: RadioType[]
-  radioHandler: any
-  SelectColor: any
+  radioHandler: (selectValue: string) => void
 }
 
-const Cycle: FC<CycleProps> = ({ data, radioHandler, SelectColor }) => {
+const Cycle: FC<CycleProps> = ({ data, radioHandler }) => {
   const [selectValue, setSelectValue] = useState('Morning')
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
