@@ -1,4 +1,4 @@
-import { ColorType, NavType, IconFieldType } from '../lib/type'
+import { ColorType, NavType, IconFieldType, RadioType } from '../lib/type'
 
 //icon
 import {
@@ -92,6 +92,33 @@ export const colorList: ColorType[] = [
   { id: 12, color: '#B39CD0' },
   { id: 13, color: '#4D8076' },
   { id: 14, color: '#845EC2' },
+]
+
+export const radioList: RadioType[] = [
+  {
+    id: 1,
+    text: 'Morning',
+    path: './images/icon/icon-radio-sun.png',
+    bgWidth: '19px 18px',
+  },
+  {
+    id: 2,
+    text: 'Evening',
+    path: './images/icon/icon-radio-evening.png',
+    bgWidth: '22px 22px',
+  },
+  {
+    id: 3,
+    text: 'Night',
+    path: './images/icon/icon-radio-night.png',
+    bgWidth: '18px 18px',
+  },
+  {
+    id: 4,
+    text: 'Always',
+    path: './images/icon/icon-radio-infinite.png',
+    bgWidth: '22px 22px',
+  },
 ]
 
 //icon
@@ -277,3 +304,4 @@ export const iconList: IconFieldType[] = [
     icon: BiCoffee,
   },
 ]
+
