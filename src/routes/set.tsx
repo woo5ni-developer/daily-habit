@@ -26,7 +26,7 @@ const Set: FC = () => {
       <ButtonColorField data={colorList} handleClick={SelectColor} />
       <ButtonIconField data={iconList} handleClick={SelectIcon} />
       <InputField />
-      <Cycle data={radioList} SelectColor={SelectColor} radioHandler={radioHandler} />
+      <Cycle data={radioList} radioHandler={radioHandler} />
       <HabitTerm />
     </div>
   )
