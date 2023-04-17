@@ -8,8 +8,6 @@ interface InputFieldProps {
 }
 
 const InputField: FC<InputFieldProps> = ({ onChange }) => {
-  const [inputValue, setInputValue] = useState('')
-
   const inputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     onChange(event.target.value)
   }
