@@ -7,7 +7,7 @@ interface IconFieldProps {
 }
 
 const Home: FC<IconFieldProps> = ({ icon }) => {
-  console.log(icon)
+  console.log('icon', icon)
   return (
     <div>
       Today Habit
