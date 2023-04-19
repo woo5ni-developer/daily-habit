@@ -1,14 +1,15 @@
 // import { border } from '@mui/system'
 import React, { FC, useState } from 'react'
-import { RadioType } from '../lib/type'
+import { ColorType, RadioType } from '../lib/type'
 import Label from '../components/Label'
 
 interface CycleProps {
   data: RadioType[]
   radioHandler: (selectValue: string) => void
+  color: ColorType
 }
 
-const Cycle: FC<CycleProps> = ({ data, radioHandler }) => {
+const Cycle: FC<CycleProps> = ({ data, radioHandler, color }) => {
   const [selectValue, setSelectValue] = useState('Morning')
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,7 +34,11 @@ const Cycle: FC<CycleProps> = ({ data, radioHandler }) => {
               backgroundImage: `url(${data.path})`,
               backgroundSize: data.bgWidth,
             }}
-            className="rounded-[10px] px-[12px] py-[8px] pl-[35px] bg-no-repeat bg-[left_12px_center] bg-[#d9d9d9] peer-checked:bg-[#ffffff]"
+            className={
+              'rounded-[10px] px-[12px] py-[8px] pl-[35px] bg-no-repeat bg-[left_12px_center] bg-[#d9d9d9] peer-checked:bg-[' +
+              color.color +
+              ']'
+            }
             htmlFor={'radio' + data.id}>
             {data.text}
           </label>

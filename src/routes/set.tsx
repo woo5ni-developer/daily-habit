@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import ButtonColorField from '../components/ButtonColorField'
 import HabitTerm from '../components/HabitTerm'
 import InputField from '../components/InputField'
@@ -10,8 +10,12 @@ import { ColorType, IconFieldType } from '../lib/type'
 import ButtonIconField from '../components/ButtonIconField'
 
 const Set: FC = () => {
+  const [color, setColor] = useState<ColorType>({
+    id: 0,
+    color: '',
+  })
   const SelectColor = (color: ColorType): void => {
-    console.log(color.color)
+    setColor(color)
   }
   const radioHandler = (selectValue: string): void => {
     console.log('selectValue ' + selectValue)
@@ -26,7 +30,7 @@ const Set: FC = () => {
       <ButtonColorField data={colorList} handleClick={SelectColor} />
       <ButtonIconField data={iconList} handleClick={SelectIcon} />
       <InputField />
-      <Cycle data={radioList} radioHandler={radioHandler} />
+      <Cycle data={radioList} color={color} radioHandler={radioHandler} />
       <HabitTerm />
     </div>
   )
