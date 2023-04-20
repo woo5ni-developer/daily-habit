@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import { IconContext } from 'react-icons'
 import { IconFieldType } from '../lib/type'
+import Label from './Label'
 
 interface ButtonIconFieldProps {
   data: IconFieldType[]
@@ -24,19 +25,21 @@ const ButtonColorField: FC<ButtonIconFieldProps> = ({ data, handleClick }) => {
   }
   // view
   return (
-    //
-    <div style={iconField.container}>
-      {data.map((icon, idx) => (
-        <button
-          key={idx}
-          type="button"
-          className="w-[30px] h-[30px] rounded-[10px]"
-          onClick={() => BtnHandler(icon)}>
-          <IconContext.Provider value={{ size: '30px', style: { padding: '3px' } }}>
-            {React.createElement(icon.icon)}
-          </IconContext.Provider>
-        </button>
-      ))}
+    <div>
+      <Label text="아이콘" labelName="icon" />
+      <div style={iconField.container}>
+        {data.map((icon, idx) => (
+          <button
+            key={idx}
+            type="button"
+            className="w-[30px] h-[30px] rounded-[10px]"
+            onClick={() => BtnHandler(icon)}>
+            <IconContext.Provider value={{ size: '30px', style: { padding: '3px' } }}>
+              {React.createElement(icon.icon)}
+            </IconContext.Provider>
+          </button>
+        ))}
+      </div>
     </div>
   )
 }

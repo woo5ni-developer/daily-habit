@@ -2,20 +2,23 @@
 import React, { FC, useState } from 'react'
 import { RadioType } from '../lib/type'
 import Label from '../components/Label'
+import { useRecoilValue } from 'recoil'
+import { habitItemState } from '../state/dataState'
 
 interface CycleProps {
   data: RadioType[]
   radioHandler: any
-  SelectColor: any
 }
 
-const Cycle: FC<CycleProps> = ({ data, radioHandler, SelectColor }) => {
+const Cycle: FC<CycleProps> = ({ data, radioHandler }) => {
   const [selectValue, setSelectValue] = useState('Morning')
+  const habit = useRecoilValue(habitItemState)
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectValue(event.target.value)
     radioHandler(event.target.value)
   }
+  const selectedBgColor = habit?.color?.color || '#4CFCE1'
   return (
     <div>
       <Label text="당신은  하루 중 언제 이 습관을 하는 게 좋은가요?" labelName="term" />
@@ -34,7 +37,7 @@ const Cycle: FC<CycleProps> = ({ data, radioHandler, SelectColor }) => {
               backgroundImage: `url(${data.path})`,
               backgroundSize: data.bgWidth,
             }}
-            className="rounded-[10px] px-[12px] py-[8px] pl-[35px] bg-no-repeat bg-[left_12px_center] bg-[#d9d9d9] peer-checked:bg-[#ffffff]"
+            className="rounded-[10px] px-[12px] py-[8px] pl-[35px] bg-no-repeat bg-[left_12px_center] bg-[#d9d9d9] peer-checked:bg-[#fff]"
             htmlFor={'radio' + data.id}>
             {data.text}
           </label>
