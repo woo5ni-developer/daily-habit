@@ -19,6 +19,9 @@ const Set: FC = () => {
   const SelectIcon = (icon: IconFieldType): void => {
     console.log(icon.icon)
   }
+  const SelectTerm = (value: Date): void => {
+    console.log('period ' + value)
+  }
   return (
     <div>
       <Title text="New Habit" />
@@ -27,7 +30,7 @@ const Set: FC = () => {
       <ButtonIconField data={iconList} handleClick={SelectIcon} />
       <InputField />
       <Cycle data={radioList} SelectColor={SelectColor} radioHandler={radioHandler} />
-      <HabitTerm />
+      <HabitTerm selectTerm={SelectTerm} />
     </div>
   )
 }
