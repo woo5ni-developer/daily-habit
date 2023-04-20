@@ -1,6 +1,8 @@
 import React, { FC } from 'react'
 import { IconContext } from 'react-icons'
 import { IconType } from 'react-icons'
+import Title from '../components/Title'
+import SelectDay from '../components/SelectDay'
 
 interface IconFieldProps {
   icon: IconType
@@ -10,7 +12,8 @@ const Home: FC<IconFieldProps> = ({ icon }) => {
   console.log('icon', icon)
   return (
     <div>
-      Today Habit
+      <Title text="April" />
+      <SelectDay />
       {/* habit 등록 */}
       <div>
         <img src="./images/bg/bg-home-habit.png" alt="" className="mx-auto" />
