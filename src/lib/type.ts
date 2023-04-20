@@ -23,3 +23,11 @@ export interface IconFieldType {
   name: string
   icon: IconType
 }
+
+export interface habitItemType {
+  id: number
+  title: string
+  icon: IconFieldType | undefined
+  color: ColorType | undefined
+  // time: RadioType | null
+}
