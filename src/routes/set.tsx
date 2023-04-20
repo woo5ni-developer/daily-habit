@@ -19,13 +19,16 @@ const Set: FC = () => {
   const SelectIcon = (icon: IconFieldType): void => {
     console.log(icon.icon)
   }
+  const handleInputChange = (setInputValue: string) => {
+    console.log('setInputValue' + setInputValue)
+  }
   return (
     <div>
       <Title text="New Habit" />
       <BackButton />
       <ButtonColorField data={colorList} handleClick={SelectColor} />
       <ButtonIconField data={iconList} handleClick={SelectIcon} />
-      <InputField />
+      <InputField onChange={handleInputChange} />
       <Cycle data={radioList} SelectColor={SelectColor} radioHandler={radioHandler} />
       <HabitTerm />
     </div>
