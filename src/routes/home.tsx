@@ -3,13 +3,16 @@ import { IconContext } from 'react-icons'
 import { IconType } from 'react-icons'
 import { useRecoilValue } from 'recoil'
 import { habitItemState } from '../state/dataState'
+import Title from '../components/Title'
+import SelectDay from '../components/SelectDay'
 
 const Home: FC = () => {
   const habit = useRecoilValue(habitItemState)
   console.log(habit?.color)
   return (
     <div>
-      Today Habit
+      <Title text="April" />
+      <SelectDay />
       {/* habit 등록 */}
       <div>
         <img src="./images/bg/bg-home-habit.png" alt="" className="mx-auto" />

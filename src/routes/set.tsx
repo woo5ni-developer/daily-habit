@@ -39,13 +39,17 @@ const Set: FC = () => {
     setSelectIcon(icon)
     console.log('여기야!!', icon.name)
   }
+  const handleInputChange = (setInputValue: string) => {
+    console.log('setInputValue' + setInputValue)
+  }
   return (
     <div>
       <Title text="New Habit" />
       <BackButton />
       <ButtonColorField data={colorList} handleClick={handleSelectColor} />
       <ButtonIconField data={iconList} handleClick={handleSelectIcon} />
-      <InputField />
+      <InputField onChange={handleInputChange} />
+      <Cycle data={radioList} SelectColor={handleSelectColor} radioHandler={radioHandler} />
       <Cycle data={radioList} SelectColor={handleSelectColor} radioHandler={radioHandler} />
       <HabitTerm />
 
