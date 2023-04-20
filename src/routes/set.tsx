@@ -46,12 +46,25 @@ const Set: FC = () => {
     <div>
       <Title text="New Habit" />
       <BackButton />
-      <ButtonColorField data={colorList} handleClick={handleSelectColor} />
-      <ButtonIconField data={iconList} handleClick={handleSelectIcon} />
-      <InputField onChange={handleInputChange} />
-      <Cycle data={radioList} SelectColor={handleSelectColor} radioHandler={radioHandler} />
-      <Cycle data={radioList} SelectColor={handleSelectColor} radioHandler={radioHandler} />
-      <HabitTerm />
+
+      <div className="mt-[24px]">
+        <InputField onChange={handleInputChange} />
+      </div>
+      <div className="mt-[24px]">
+        <ButtonColorField data={colorList} handleClick={handleSelectColor} />
+      </div>
+
+      <div className="mt-[24px]">
+        <ButtonIconField data={iconList} handleClick={handleSelectIcon} />
+      </div>
+
+      <div className="mt-[24px]">
+        <Cycle data={radioList} radioHandler={radioHandler} />
+      </div>
+
+      <div className="mt-[24px]">
+        <HabitTerm />
+      </div>
 
       <button type="button" onClick={() => habitParam()}>
         버튼
