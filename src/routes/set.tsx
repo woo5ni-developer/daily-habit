@@ -13,59 +13,51 @@ import { habitItemState } from '../state/dataState'
 
 const Set: FC = () => {
   const [habit, setHabitItem] = useRecoilState(habitItemState)
-  const [selectColor, setSelectColor] = useState<ColorType>()
-  const [selectIcon, setSelectIcon] = useState<IconFieldType>()
+  const [selectColor, setSelectColor] = useState<ColorType>(colorList[0])
+  const [selectIcon, setSelectIcon] = useState<IconFieldType>(iconList[0])
+  const [inputValue, setInputValue] = useState('')
 
   const habitParam = () => {
     setHabitItem({
-      ...habit,
-      id: 1,
-      title: '',
+      id: 0,
+      title: inputValue,
       icon: selectIcon,
       color: selectColor,
     })
-
-    console.log(habit)
   }
   const handleSelectColor = (color: ColorType): void => {
     setSelectColor(color)
-    console.log()
   }
   const radioHandler = (selectValue: string): void => {
-    console.log('selectValue ' + selectValue)
+    console.log(selectValue)
   }
   const handleSelectIcon = (icon: IconFieldType): void => {
     // setHabitItem()
     setSelectIcon(icon)
     console.log('여기야!!', icon.name)
   }
-  const handleInputChange = (setInputValue: string) => {
-    console.log('setInputValue' + setInputValue)
+  const handleInputChange = (value: string) => {
+    setInputValue(value)
   }
   return (
     <div>
       <Title text="New Habit" />
       <BackButton />
-
       <div className="mt-[24px]">
         <InputField onChange={handleInputChange} />
       </div>
       <div className="mt-[24px]">
         <ButtonColorField data={colorList} handleClick={handleSelectColor} />
       </div>
-
       <div className="mt-[24px]">
         <ButtonIconField data={iconList} handleClick={handleSelectIcon} />
       </div>
-
       <div className="mt-[24px]">
         <Cycle data={radioList} radioHandler={radioHandler} />
       </div>
-
       <div className="mt-[24px]">
         <HabitTerm />
       </div>
-
       <button type="button" onClick={() => habitParam()}>
         버튼
       </button>

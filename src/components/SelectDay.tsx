@@ -10,14 +10,10 @@ const SelectDay: FC = () => {
         className="relative pt-[8px] inline-block mx-[4px]"
         style={{ width: 'calc((100% / 7) - 8px)' }}>
         {/* 선택시 요일버튼 상단에 뜨는 불릿 */}
-        <i
-          className="absolute block w-[4px] h-[4px] radius-[4px] top-0 left-[18px]"
-          style={{ background: habit?.color?.color ?? '' }}></i>
+        <i className="absolute block w-[4px] h-[4px] radius-[4px] top-0 left-[18px]"></i>
         {/* //선택시 요일버튼 상단에 뜨는 불릿 */}
         {/* 오늘 버튼엔 bg-[#4CFCE1] 클래스 추가 */}
-        <button
-          className="w-full h-[40px] rounded-[10px] border border-solid text-[#1E1E1E] font-bold text-[14px]"
-          style={{ background: habit?.color?.color ?? '', borderColor: habit?.color?.color ?? '' }}>
+        <button className="w-full h-[40px] rounded-[10px] border border-solid text-[#1E1E1E] font-bold text-[14px]">
           월
         </button>
         {/* //오늘 버튼엔 bg-[#4CFCE1] 클래스 추가 */}

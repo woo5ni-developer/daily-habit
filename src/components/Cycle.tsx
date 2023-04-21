@@ -18,7 +18,9 @@ const Cycle: FC<CycleProps> = ({ data, radioHandler }) => {
     setSelectValue(event.target.value)
     radioHandler(event.target.value)
   }
-  const selectedBgColor = habit?.color?.color || '#4CFCE1'
+  const checkedStyle = {
+    backgroundColor: habit.color.color,
+  }
   return (
     <div>
       <Label text="당신은  하루 중 언제 이 습관을 하는 게 좋은가요?" labelName="term" />
@@ -36,8 +38,9 @@ const Cycle: FC<CycleProps> = ({ data, radioHandler }) => {
             style={{
               backgroundImage: `url(${data.path})`,
               backgroundSize: data.bgWidth,
+              ...(selectValue === data.text && checkedStyle),
             }}
-            className="rounded-[10px] px-[12px] py-[8px] pl-[35px] bg-no-repeat bg-[left_12px_center] bg-[#d9d9d9] peer-checked:bg-[#fff]"
+            className="rounded-[10px] px-[12px] py-[8px] pl-[35px] bg-no-repeat bg-[left_12px_center] bg-[#d9d9d9]"
             htmlFor={'radio' + data.id}>
             {data.text}
           </label>
