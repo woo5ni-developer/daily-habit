@@ -7,7 +7,7 @@ export const nameState = atom<string>({
   default: '',
 })
 
-export const habitItemState = atom<habitItemType | null>({
+export const habitItemState = atom<habitItemType>({
   key: 'iconState',
   default: initialIcon,
 })
