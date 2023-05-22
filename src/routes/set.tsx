@@ -11,6 +11,7 @@ import ButtonIconField from '../components/ButtonIconField'
 import { useRecoilState } from 'recoil'
 import { habitItemState } from '../state/dataState'
 import Button from '@mui/material/Button'
+import EastIcon from '@mui/icons-material/East'
 
 const Set: FC = () => {
   const [habit, setHabitItem] = useRecoilState(habitItemState)
@@ -19,7 +20,6 @@ const Set: FC = () => {
   const [inputValue, setInputValue] = useState('')
 
   const habitParam = (): void => {
-    console.log('habitParam')
     setHabitItem({
       id: 0,
       title: inputValue,
@@ -38,7 +38,7 @@ const Set: FC = () => {
     setSelectIcon(icon)
     console.log('여기야!!', icon.name)
   }
-  const handleInputChange = (value: string) => {
+  const handleInputChange = (value: string): void => {
     setInputValue(value)
   }
   return (
@@ -65,7 +65,8 @@ const Set: FC = () => {
           variant="contained"
           fullWidth={true}
           size="large"
-          className="!py-3 !text-2xl !rounded-3xl !normal-case !bg-dh-navy"
+          className="!py-3 !text-2xl !rounded-full !normal-case !bg-dh-navy !font-light"
+          endIcon={<EastIcon className="!ml-5" />}
           onClick={habitParam}>
           Let’s Start
         </Button>

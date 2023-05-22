@@ -11,6 +11,7 @@ module.exports = {
         'dh-gray-200': '#F7F7F7',
         'dh-purple': '#B1B2FF',
         'dh-blue': '#5355FB',
+        'dh-navy': '#120829',
       },
       width: {
         7.5: '1.875rem', //30px
