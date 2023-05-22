@@ -11,3 +11,8 @@ export const habitItemState = atom<habitItemType>({
   key: 'iconState',
   default: initialIcon,
 })
+
+export const dateFormatState = atom<string>({
+  key: 'dateFormatState',
+  default: 'YYYY-MM-DD'
+})
