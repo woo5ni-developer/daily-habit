@@ -7,7 +7,7 @@ interface Props {
 
 const Label: FC<Props> = ({ text, labelName }) => {
   return (
-    <label className="text-[18px] text-[#1E1E1E] block" htmlFor={labelName}>
+    <label className="text-lg block pb-4" htmlFor={labelName}>
       {text}
     </label>
   )
