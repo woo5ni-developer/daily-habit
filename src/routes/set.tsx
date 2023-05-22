@@ -14,12 +14,12 @@ import Button from '@mui/material/Button'
 import EastIcon from '@mui/icons-material/East'
 
 const Set: FC = () => {
-  const [habit, setHabitItem] = useRecoilState(habitItemState)
+  const [habitItem, setHabitItem] = useRecoilState(habitItemState)
   const [selectColor, setSelectColor] = useState<ColorType>(colorList[0])
   const [selectIcon, setSelectIcon] = useState<IconFieldType>(iconList[0])
   const [inputValue, setInputValue] = useState('')
 
-  const habitParam = (): void => {
+  const addHabit = (): void => {
     setHabitItem({
       id: 0,
       title: inputValue,
@@ -41,6 +41,11 @@ const Set: FC = () => {
   const handleInputChange = (value: string): void => {
     setInputValue(value)
   }
+
+  const handlePeriod = (data: string[]): void => {
+    console.log('data', data)
+  }
+
   return (
     <div>
       <Title text="New Habit" />
@@ -58,7 +63,7 @@ const Set: FC = () => {
         <Cycle data={radioList} radioHandler={radioHandler} />
       </div>
       <div className="mt-6">
-        <HabitTerm />
+        <HabitTerm handleChange={handlePeriod} />
       </div>
       <div className="mt-6">
         <Button
@@ -67,7 +72,7 @@ const Set: FC = () => {
           size="large"
           className="!py-3 !text-2xl !rounded-full !normal-case !bg-dh-navy !font-light"
           endIcon={<EastIcon className="!ml-5" />}
-          onClick={habitParam}>
+          onClick={addHabit}>
           Let’s Start
         </Button>
       </div>
