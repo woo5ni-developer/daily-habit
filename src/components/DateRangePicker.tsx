@@ -19,6 +19,9 @@ const DateRangePicker: FC<DateRangePickerProps> = ({ onDateChage }) => {
   const [end, setEnd] = useState(today())
   const [period, setPeriod] = useState([''])
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [value, setValue] = React.useState<any | null>(null)
+
   useEffect(() => {
     setPeriod([start, end])
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -55,7 +58,7 @@ const DateRangePicker: FC<DateRangePickerProps> = ({ onDateChage }) => {
               className="!pr-2"
               format={dateFormat}
               defaultValue={dayjs(start)}
-              onChange={handleStartChange}
+              onAccept={handleStartChange}
             />
             <i
               className="blockborder-gray-400 border-t-2
@@ -64,7 +67,10 @@ const DateRangePicker: FC<DateRangePickerProps> = ({ onDateChage }) => {
               label="End"
               className="!pl-2"
               format={dateFormat}
-              onChange={handleEndChange}
+              value={value}
+              onChange={(newValue) => setValue(newValue)}
+              onAccept={handleEndChange}
+              minDate={dayjs(start)}
             />
           </div>
         </DemoItem>
