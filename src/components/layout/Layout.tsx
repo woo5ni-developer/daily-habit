@@ -9,7 +9,7 @@ interface LayoutProps {
 const Layout: FC<LayoutProps> = ({ children }) => {
   const location = useLocation()
   return (
-    <div className="wrap overflow-hidden px-4 py-6 h-full min-h-screen">
+    <div className="wrap overflow-hidden px-6 py-8 h-full min-h-screen">
       <div className="min-h-full">
         <main className="h-full">{children}</main>
         {location.pathname.replace('/', '') !== 'set' && <Nav />}
