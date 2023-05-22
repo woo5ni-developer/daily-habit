@@ -18,7 +18,8 @@ const Set: FC = () => {
   const [selectIcon, setSelectIcon] = useState<IconFieldType>(iconList[0])
   const [inputValue, setInputValue] = useState('')
 
-  const habitParam = () => {
+  const habitParam = (): void => {
+    console.log('habitParam')
     setHabitItem({
       id: 0,
       title: inputValue,
@@ -44,24 +45,31 @@ const Set: FC = () => {
     <div>
       <Title text="New Habit" />
       <BackButton />
-      <div className="mt-[24px]">
+      <div className="mt-6">
         <InputField onChange={handleInputChange} />
       </div>
-      <div className="mt-[24px]">
+      <div className="mt-6">
         <ButtonColorField data={colorList} handleClick={handleSelectColor} />
       </div>
-      <div className="mt-[24px]">
+      <div className="mt-6">
         <ButtonIconField data={iconList} handleClick={handleSelectIcon} />
       </div>
-      <div className="mt-[24px]">
+      <div className="mt-6">
         <Cycle data={radioList} radioHandler={radioHandler} />
       </div>
-      <div className="mt-[24px]">
+      <div className="mt-6">
         <HabitTerm />
       </div>
-      <button type="button" onClick={() => habitParam()}>
-        버튼
-      </button>
+      <div className="mt-6">
+        <Button
+          variant="contained"
+          fullWidth={true}
+          size="large"
+          className="!py-3 !text-2xl !rounded-3xl !normal-case !bg-dh-navy"
+          onClick={habitParam}>
+          Let’s Start
+        </Button>
+      </div>
     </div>
   )
 }
