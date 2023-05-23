@@ -1,3 +1,5 @@
+import { BaseSingleInputFieldProps, DateValidationError, FieldSection, UseDateFieldProps } from '@mui/x-date-pickers-pro'
+import { Dayjs } from 'dayjs'
 import { IconType } from 'react-icons'
 
 export interface NavType {
@@ -30,4 +32,10 @@ export interface habitItemType {
   icon: IconFieldType
   color: ColorType
   // time: RadioType | null
+}
+
+export interface ButtonFieldProps
+  extends UseDateFieldProps<Dayjs>,
+    BaseSingleInputFieldProps<Dayjs | null, FieldSection, DateValidationError> {
+  setOpen?: React.Dispatch<React.SetStateAction<boolean>>
 }
