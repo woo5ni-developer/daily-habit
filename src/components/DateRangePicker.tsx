@@ -68,7 +68,7 @@ const DateRangePicker: FC<DateRangePickerProps> = ({
     setEnd('')
   }
 
-  const ActionList = (props: PickersActionBarProps): React.JSX.Element => {
+  const ActionList = (props: PickersActionBarProps): JSX.Element => {
     const { onAccept, onCancel, className } = props
     const actions = [
       { text: 'No End', method: () => handleNoEnd(onCancel) },
@@ -85,7 +85,7 @@ const DateRangePicker: FC<DateRangePickerProps> = ({
     )
   }
 
-  const ButtonField = (props: ButtonFieldProps): React.JSX.Element => {
+  const ButtonField = (props: ButtonFieldProps): JSX.Element => {
     const { setOpen, id, disabled } = props
 
     return (
