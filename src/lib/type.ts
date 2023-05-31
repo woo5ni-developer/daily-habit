@@ -29,7 +29,7 @@ export interface IconFieldType {
 export interface habitItemType {
   id: number
   title: string
-  icon: IconFieldType
+  icon: IconFieldType | undefined
   color: ColorType
   term: string[]
   // time: RadioType | null

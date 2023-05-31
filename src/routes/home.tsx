@@ -3,7 +3,6 @@ import { IconContext } from 'react-icons'
 import { IconType } from 'react-icons'
 import { useRecoilValue } from 'recoil'
 import { habitItemState } from '../state/dataState'
-import Title from '../components/Title'
 import SelectDay from '../components/SelectDay'
 
 const Home: FC = () => {
@@ -12,7 +11,6 @@ const Home: FC = () => {
   console.log(habit)
   return (
     <div>
-      <Title text="April" />
       <SelectDay />
       {/* habit 등록 */}
 
