@@ -5,6 +5,7 @@ export const initialIcon: habitItemType = {
   title: '',
   icon: iconList[0],
   color: colorList[0],
+  term: []
   // time: null,
 }
 
@@ -21,4 +22,4 @@ export const today = (): string => {
   return dateString
 }
 
-export const initialPeriod: string[] = [today(), today()]
+export const initialTerm: string[] = [today(), today()]

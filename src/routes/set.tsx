@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import ButtonColorField from '../components/ButtonColorField'
 import HabitTerm from '../components/HabitTerm'
 import InputField from '../components/InputField'
@@ -12,12 +12,14 @@ import { useRecoilState } from 'recoil'
 import { habitItemState } from '../state/dataState'
 import Button from '@mui/material/Button'
 import EastIcon from '@mui/icons-material/East'
+import { initialTerm } from '../state/initialState'
 
 const Set: FC = () => {
   const [habitItem, setHabitItem] = useRecoilState(habitItemState)
   const [selectColor, setSelectColor] = useState<ColorType>(colorList[0])
   const [selectIcon, setSelectIcon] = useState<IconFieldType>(iconList[0])
   const [inputValue, setInputValue] = useState('')
+  const [term, setTerm] = useState(initialTerm)
 
   const addHabit = (): void => {
     setHabitItem({
@@ -25,6 +27,7 @@ const Set: FC = () => {
       title: inputValue,
       icon: selectIcon,
       color: selectColor,
+      term,
     })
   }
   const handleSelectColor = (color: ColorType): void => {
@@ -42,9 +45,13 @@ const Set: FC = () => {
     setInputValue(value)
   }
 
-  const handlePeriod = (data: string[]): void => {
-    console.log('data', data)
+  const handleTerm = (data: string[]): void => {
+    setTerm(data)
   }
+
+  useEffect(() => {
+    console.log('habitItem', habitItem)
+  }, [habitItem])
 
   return (
     <div>
@@ -63,7 +70,7 @@ const Set: FC = () => {
         <Cycle data={radioList} radioHandler={radioHandler} />
       </div>
       <div className="mt-6">
-        <HabitTerm handleChange={handlePeriod} />
+        <HabitTerm handleChange={handleTerm} />
       </div>
       <div className="mt-6">
         <Button

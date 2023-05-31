@@ -31,6 +31,7 @@ export interface habitItemType {
   title: string
   icon: IconFieldType
   color: ColorType
+  term: string[]
   // time: RadioType | null
 }
 
