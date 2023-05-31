@@ -13,8 +13,11 @@ import { habitListState } from '../state/dataState'
 import Button from '@mui/material/Button'
 import EastIcon from '@mui/icons-material/East'
 import { initialTerm } from '../state/initialState'
+import { useNavigate } from 'react-router-dom'
 
 const Set: FC = () => {
+  const navigate = useNavigate()
+
   const [habitList, setHabitList] = useRecoilState(habitListState)
   const [selectColor, setSelectColor] = useState<ColorType>(colorList[0])
   const [selectIcon, setSelectIcon] = useState<IconFieldType>(iconList[0])
@@ -30,6 +33,8 @@ const Set: FC = () => {
       term,
     }
     setHabitList([...habitList, newItem])
+
+    navigate('/')
   }
   const handleSelectColor = (color: ColorType): void => {
     setSelectColor(color)
@@ -38,9 +43,7 @@ const Set: FC = () => {
     console.log(selectValue)
   }
   const handleSelectIcon = (icon: IconFieldType): void => {
-    // setHabitItem()
     setSelectIcon(icon)
-    console.log('여기야!!', icon.name)
   }
   const handleInputChange = (value: string): void => {
     setInputValue(value)
