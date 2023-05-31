@@ -9,26 +9,27 @@ import { colorList, radioList, iconList } from '../data/response'
 import { ColorType, IconFieldType } from '../lib/type'
 import ButtonIconField from '../components/ButtonIconField'
 import { useRecoilState } from 'recoil'
-import { habitItemState } from '../state/dataState'
+import { habitListState } from '../state/dataState'
 import Button from '@mui/material/Button'
 import EastIcon from '@mui/icons-material/East'
 import { initialTerm } from '../state/initialState'
 
 const Set: FC = () => {
-  const [habitItem, setHabitItem] = useRecoilState(habitItemState)
+  const [habitList, setHabitList] = useRecoilState(habitListState)
   const [selectColor, setSelectColor] = useState<ColorType>(colorList[0])
   const [selectIcon, setSelectIcon] = useState<IconFieldType>(iconList[0])
   const [inputValue, setInputValue] = useState('')
   const [term, setTerm] = useState(initialTerm)
 
   const addHabit = (): void => {
-    setHabitItem({
-      id: 0,
+    const newItem = {
+      id: habitList.length,
       title: inputValue,
       icon: selectIcon,
       color: selectColor,
       term,
-    })
+    }
+    setHabitList([...habitList, newItem])
   }
   const handleSelectColor = (color: ColorType): void => {
     setSelectColor(color)
@@ -50,8 +51,8 @@ const Set: FC = () => {
   }
 
   useEffect(() => {
-    console.log('habitItem', habitItem)
-  }, [habitItem])
+    console.log('habitItem', habitList)
+  }, [habitList])
 
   return (
     <div>
@@ -64,10 +65,10 @@ const Set: FC = () => {
         <ButtonColorField data={colorList} handleClick={handleSelectColor} />
       </div>
       <div className="mt-6">
-        <ButtonIconField data={iconList} handleClick={handleSelectIcon} />
+        <ButtonIconField data={iconList} handleClick={handleSelectIcon} color={selectColor} />
       </div>
       <div className="mt-6">
-        <Cycle data={radioList} radioHandler={radioHandler} />
+        <Cycle data={radioList} radioHandler={radioHandler} color={selectColor} />
       </div>
       <div className="mt-6">
         <HabitTerm handleChange={handleTerm} />

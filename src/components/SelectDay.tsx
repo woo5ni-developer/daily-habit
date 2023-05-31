@@ -1,10 +1,7 @@
 import React, { FC } from 'react'
-import { useRecoilValue } from 'recoil'
-import { habitItemState } from '../state/dataState'
 import Title from './Title'
 
 const SelectDay: FC = () => {
-  const habit = useRecoilValue(habitItemState)
   const currentDate = new Date()
   const daysOfWeek = ['월', '화', '수', '목', '금', '토', '일']
 

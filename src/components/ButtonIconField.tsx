@@ -1,23 +1,19 @@
 import React, { FC, useState } from 'react'
 import { IconContext } from 'react-icons'
-import { useRecoilValue } from 'recoil'
-import { IconFieldType } from '../lib/type'
-import { habitItemState } from '../state/dataState'
+import { ColorType, IconFieldType } from '../lib/type'
 import Label from './Label'
 
 interface ButtonIconFieldProps {
   data: IconFieldType[]
   handleClick: (icon: IconFieldType) => void
+  color: ColorType
 }
 
-const ButtonColorField: FC<ButtonIconFieldProps> = ({ data, handleClick }) => {
+const ButtonColorField: FC<ButtonIconFieldProps> = ({ data, handleClick, color }) => {
   // logic
 
   //state
   const [selectedIcon, setSelectedIcon] = useState<IconFieldType>(data[0])
-
-  // Recoil state
-  const habit = useRecoilValue(habitItemState)
 
   const handleIconClick = (icon: IconFieldType): void => {
     setSelectedIcon(icon)
@@ -33,7 +29,7 @@ const ButtonColorField: FC<ButtonIconFieldProps> = ({ data, handleClick }) => {
       gridAutoFlow: 'column',
     },
   }
-  const isChecked = (icon: IconFieldType) => {
+  const isChecked = (icon: IconFieldType): boolean => {
     return icon.name === selectedIcon.name
   }
   // view
@@ -46,7 +42,7 @@ const ButtonColorField: FC<ButtonIconFieldProps> = ({ data, handleClick }) => {
             key={idx}
             type="button"
             style={{
-              backgroundColor: isChecked(icon) ? habit.color.color : '',
+              backgroundColor: isChecked(icon) ? color.color : '',
             }}
             className="w-[30px] h-[30px] rounded-[10px]"
             onClick={() => {

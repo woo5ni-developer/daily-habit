@@ -1,25 +1,22 @@
 // import { border } from '@mui/system'
 import React, { FC, useState } from 'react'
-import { RadioType } from '../lib/type'
+import { ColorType, RadioType } from '../lib/type'
 import Label from '../components/Label'
-import { useRecoilValue } from 'recoil'
-import { habitItemState } from '../state/dataState'
-
 interface CycleProps {
   data: RadioType[]
   radioHandler: any
+  color: ColorType
 }
 
-const Cycle: FC<CycleProps> = ({ data, radioHandler }) => {
+const Cycle: FC<CycleProps> = ({ data, radioHandler, color }) => {
   const [selectValue, setSelectValue] = useState('Morning')
-  const habit = useRecoilValue(habitItemState)
 
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setSelectValue(event.target.value)
     radioHandler(event.target.value)
   }
   const checkedStyle = {
-    backgroundColor: habit.color.color,
+    backgroundColor: color.color,
   }
   return (
     <div>

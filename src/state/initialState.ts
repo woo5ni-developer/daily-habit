@@ -1,13 +1,15 @@
 import { colorList, iconList } from '../data/response'
 import { habitItemType } from '../lib/type'
-export const initialIcon: habitItemType = {
-  id: 0,
-  title: '',
-  icon: iconList[0],
-  color: colorList[0],
-  term: []
-  // time: null,
-}
+export const initialHabitList: habitItemType[] = [
+  {
+    id: 0,
+    title: '',
+    icon: iconList[0],
+    color: colorList[0],
+    term: [],
+    // time: null,
+  },
+]
 
 export const today = (): string => {
   const today = new Date()
