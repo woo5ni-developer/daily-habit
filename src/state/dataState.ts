@@ -6,11 +6,6 @@ import { recoilPersist } from 'recoil-persist'
 
 const { persistAtom } = recoilPersist()
 
-export const nameState = atom<string>({
-  key: 'nameState',
-  default: '',
-})
-
 export const habitListState = atom<habitItemType[]>({
   key: 'habitListState',
   default: initialHabitList,

@@ -54,7 +54,7 @@ const Set: FC = () => {
   }
 
   useEffect(() => {
-    console.log('habitItem', habitList)
+    console.log('habitList', habitList)
   }, [habitList])
 
   return (

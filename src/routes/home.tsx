@@ -11,8 +11,6 @@ const Home: FC = () => {
   return (
     <div>
       <SelectDay />
-      {/* habit 등록 */}
-
       {/* 리스트 */}
       {habitList.length ? (
         <ul>
