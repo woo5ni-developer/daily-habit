@@ -133,7 +133,7 @@ const DateRangePicker: FC<DateRangePickerProps> = ({
               open={open}
               onClose={() => setOpen(false)}
               onOpen={() => setOpen(true)}
-              slotProps={{ field: { setOpen } as never }}
+              slotProps={{ field: { ...setOpen } as never }}
             />
           </div>
         </DemoItem>

@@ -25,7 +25,7 @@ const Nav: FC = () => {
   useEffect(() => {
     const pathname = location.pathname.replace('/', '') || 'home'
     setUrlPath(pathname)
-  })
+  }, [location.pathname, setUrlPath])
   return (
     <div className="fixed bottom-0 left-0 w-full px-[24px] pb-[30px] pt-[36px]">
       <div style={navStyles.container} className="flex align-middle">
