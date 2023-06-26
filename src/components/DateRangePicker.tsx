@@ -85,9 +85,13 @@ const DateRangePicker: FC<DateRangePickerProps> = ({
     )
   }
 
+  const handleError = (): void => {
+    console.log('🚀 : handleError==>')
+  }
+
   const ButtonField = (props: ButtonFieldProps): JSX.Element => {
     // 첫 화면에서 NO END버튼
-    const { setOpen, id } = props
+    const { id } = props
 
     return (
       <div className="!pl-2 !flex-1 text-dh-gray-400">
@@ -98,7 +102,7 @@ const DateRangePicker: FC<DateRangePickerProps> = ({
           disabled={false}
           size={'large'}
           color="inherit"
-          onClick={() => setOpen?.((prev) => !prev)}>
+          onClick={() => setOpen((prev) => !prev)}>
           <span className="text-dh-gray-500">No End!!!</span>
         </Button>
       </div>
@@ -134,7 +138,8 @@ const DateRangePicker: FC<DateRangePickerProps> = ({
               open={open}
               onClose={() => setOpen(false)}
               onOpen={() => setOpen(true)}
-              slotProps={{ field: { setOpen, id: 'End' } as never }}
+              onError={handleError}
+              slotProps={{ field: { id: 'End' } as never }}
             />
           </div>
         </DemoItem>
