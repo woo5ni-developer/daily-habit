@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import { IconContext } from 'react-icons'
 import { useRecoilValue } from 'recoil'
 import { habitListState } from '../state/dataState'
@@ -7,6 +7,10 @@ import { iconList } from '../data/response'
 
 const Home: FC = () => {
   const habitList = useRecoilValue(habitListState)
+
+  useEffect(() => {
+    console.log('habitList', habitList)
+  })
 
   return (
     <div>
