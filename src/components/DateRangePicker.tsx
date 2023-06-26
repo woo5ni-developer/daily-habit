@@ -86,7 +86,8 @@ const DateRangePicker: FC<DateRangePickerProps> = ({
   }
 
   const ButtonField = (props: ButtonFieldProps): JSX.Element => {
-    const { setOpen, id, disabled } = props
+    // 첫 화면에서 NO END버튼
+    const { setOpen, id } = props
 
     return (
       <div className="!pl-2 !flex-1 text-dh-gray-400">
@@ -94,11 +95,11 @@ const DateRangePicker: FC<DateRangePickerProps> = ({
           variant="outlined"
           className="w-full !px-3 !py-3 !justify-start"
           id={id}
-          disabled={disabled}
+          disabled={false}
           size={'large'}
           color="inherit"
           onClick={() => setOpen?.((prev) => !prev)}>
-          <span className="text-dh-gray-500">No End</span>
+          <span className="text-dh-gray-500">No End!!!</span>
         </Button>
       </div>
     )
@@ -133,7 +134,7 @@ const DateRangePicker: FC<DateRangePickerProps> = ({
               open={open}
               onClose={() => setOpen(false)}
               onOpen={() => setOpen(true)}
-              slotProps={{ field: { ...setOpen } as never }}
+              slotProps={{ field: { setOpen, id: 'End' } as never }}
             />
           </div>
         </DemoItem>
