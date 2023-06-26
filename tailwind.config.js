@@ -15,6 +15,9 @@ module.exports = {
         'dh-blue': '#5355FB',
         'dh-navy': '#120829',
       },
+      backgroundColor: {
+        'dh-green': '#4CFCE1',
+      },
       width: {
         7.5: '1.875rem', //30px
       },
@@ -31,5 +34,9 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addVariant }) {
+      addVariant('sibling', '& + li')
+    },
+  ],
 }
