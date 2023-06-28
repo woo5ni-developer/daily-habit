@@ -1,6 +1,10 @@
 import React, { FC, useEffect, useState } from 'react'
 import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo'
-import { LocalizationProvider, PickersActionBarProps } from '@mui/x-date-pickers-pro'
+import {
+  DateValidationError,
+  LocalizationProvider,
+  PickersActionBarProps,
+} from '@mui/x-date-pickers-pro'
 import { AdapterDayjs } from '@mui/x-date-pickers-pro/AdapterDayjs'
 import dayjs from 'dayjs'
 import { dateFormatState } from '../state/dataState'
@@ -85,8 +89,9 @@ const DateRangePicker: FC<DateRangePickerProps> = ({
     )
   }
 
-  const handleError = (): void => {
-    console.log('🚀 : handleError==>')
+  const handleError = (error: DateValidationError, value: dayjs.Dayjs | null): void => {
+    console.log('🚀 : handleError==>', error)
+    console.log('🚀 : value==>', value)
   }
 
   const ButtonField = (props: ButtonFieldProps): JSX.Element => {
@@ -138,7 +143,7 @@ const DateRangePicker: FC<DateRangePickerProps> = ({
               open={open}
               onClose={() => setOpen(false)}
               onOpen={() => setOpen(true)}
-              onError={handleError}
+              onError={(error, value) => handleError(error, value)}
               slotProps={{ field: { id: 'End' } as never }}
             />
           </div>
