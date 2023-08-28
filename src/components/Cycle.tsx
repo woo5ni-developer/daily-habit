@@ -4,7 +4,7 @@ import { ColorType, RadioType } from '../lib/type'
 import Label from '../components/Label'
 interface CycleProps {
   data: RadioType[]
-  radioHandler: any
+  radioHandler: (data: string) => void
   color: ColorType
 }
 
