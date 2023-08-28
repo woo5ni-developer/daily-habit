@@ -6,9 +6,10 @@ import { today } from '../state/initialState'
 
 interface HabitTermProps {
   handleChange: (data: string[]) => void
+  isHabitTermValid: (isValid: boolean) => void
 }
 
-const HabitTerm: FC<HabitTermProps> = ({ handleChange }) => {
+const HabitTerm: FC<HabitTermProps> = ({ handleChange, isHabitTermValid }) => {
   const handleDateChage = (data: string[]): void => {
     handleChange(data)
   }
@@ -19,6 +20,7 @@ const HabitTerm: FC<HabitTermProps> = ({ handleChange }) => {
         defaultStartDate={today()}
         defaultEndDate={''}
         onDateChage={handleDateChage}
+        isHabitTermValid={isHabitTermValid}
       />
     </div>
   )

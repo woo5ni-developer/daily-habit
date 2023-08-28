@@ -18,12 +18,14 @@ interface DateRangePickerProps {
   defaultStartDate: string
   defaultEndDate: string
   onDateChage: (data: string[]) => void
+  isHabitTermValid: (isValid: boolean) => void
 }
 
 const DateRangePicker: FC<DateRangePickerProps> = ({
   defaultStartDate,
   defaultEndDate,
   onDateChage,
+  isHabitTermValid,
 }) => {
   const dateFormat = useRecoilValue(dateFormatState)
 
@@ -89,9 +91,18 @@ const DateRangePicker: FC<DateRangePickerProps> = ({
     )
   }
 
-  const handleError = (error: DateValidationError, value: dayjs.Dayjs | null): void => {
+  const handleError = (error: DateValidationError): void => {
     console.log('🚀 : handleError==>', error)
-    console.log('🚀 : value==>', value)
+    // console.log('🚀 : value==>', value)
+    if (error === 'minDate') {
+      // 에러 있는 경우
+      isHabitTermValid(false)
+      console.log('error!!')
+      return
+    }
+
+    // 에러 해결된 경우(null)
+    isHabitTermValid(true)
   }
 
   const ButtonField = (props: ButtonFieldProps): JSX.Element => {
@@ -143,7 +154,7 @@ const DateRangePicker: FC<DateRangePickerProps> = ({
               open={open}
               onClose={() => setOpen(false)}
               onOpen={() => setOpen(true)}
-              onError={(error, value) => handleError(error, value)}
+              onError={(error) => handleError(error)}
               slotProps={{ field: { id: 'End' } as never }}
             />
           </div>
