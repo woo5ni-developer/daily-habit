@@ -24,18 +24,42 @@ const Set: FC = () => {
   const [inputValue, setInputValue] = useState('')
   const [term, setTerm] = useState(initialTerm)
 
+  const [isDateValid, setIsDateValid] = useState(true)
+
   const addHabit = (): void => {
+    if (!isValid()) return // 유효하지 않은 경우
     const newItem = {
       id: habitList.length,
-      title: inputValue,
+      title: inputValue.trim(),
       icon: selectIcon,
       color: selectColor,
       term,
     }
     setHabitList([...habitList, newItem])
-
     navigate('/')
   }
+
+  const isValid = (): boolean => {
+    const result = isTitleValid() ? isDateValid : false
+    return result
+  }
+
+  const isTitleValid = (): boolean => {
+    const value = inputValue.trim()
+    const result = value ? !isDuplicate(value) : false
+    if (!result) alert('습관 이름이 유효하지 않습니다')
+
+    return result
+  }
+
+  const isDuplicate = (value: string): boolean => {
+    return !!habitList.find((habit) => habit.title === value)
+  }
+
+  const isHabitTermValid = (isValid: boolean): void => {
+    setIsDateValid(isValid)
+  }
+
   const handleSelectColor = (color: ColorType): void => {
     setSelectColor(color)
   }
@@ -74,7 +98,7 @@ const Set: FC = () => {
         <Cycle data={radioList} radioHandler={radioHandler} color={selectColor} />
       </div>
       <div className="mt-6">
-        <HabitTerm handleChange={handleTerm} />
+        <HabitTerm handleChange={handleTerm} isHabitTermValid={isHabitTermValid} />
       </div>
       <div className="mt-6">
         <Button
