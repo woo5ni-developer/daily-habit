@@ -1,11 +1,13 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
+import { useRecoilValue } from 'recoil'
 import Title from './Title'
+import { habitListState } from '../state/dataState'
 
 const SelectDay: FC = () => {
   // logic
+  // init 변수
   const currentDate = new Date()
-  const daysOfWeek = ['월', '화', '수', '목', '금', '토', '일']
-
+  const daysOfWeek = ['일', '월', '화', '수', '목', '금', '토']
   const monthNames = [
     'January',
     'February',
@@ -21,22 +23,46 @@ const SelectDay: FC = () => {
     'December',
   ]
 
+  // useRecoilValue
+  const habitList = useRecoilValue(habitListState)
+
+  //useState
+  const [selectedDate, setSelectedDate] = useState<number | null>(null)
+  const [selectedYear, setSelectedYear] = useState<number>(currentDate.getFullYear())
+  const [currentId, setCurrentId] = useState(0)
+
+  useEffect(() => {
+    console.log('habitList', habitList)
+    console.log('selectedDate', selectedDate)
+    console.log('selectedYear', selectedYear)
+  })
+
+  useEffect(() => {
+    setCurrentId(currentDate.getDay())
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   // Calculate the start date of the current week (Monday)
   const startDate = new Date(currentDate)
-  startDate.setDate(startDate.getDate() - startDate.getDay() + 1)
-  const monthName = monthNames[startDate.getMonth()]
+  startDate.setDate(startDate.getDate() - startDate.getDay())
+  const monthName = monthNames[startDate.getMonth()] // -> useState바꾸기
 
-  // Handle month transitions
-  const previousMonth = startDate.getMonth() - 1
-  const lastDayOfPreviousMonth = new Date(startDate.getFullYear(), previousMonth, 0).getDate()
+  // Calculate the last day of the current month
+  const nextMonth = startDate.getMonth() + 1
+  const firstDayOfNextMonth = new Date(startDate.getFullYear(), nextMonth, 1)
+  const lastDayOfCurrentMonth = new Date(
+    firstDayOfNextMonth.getFullYear(),
+    firstDayOfNextMonth.getMonth(),
+    0,
+  ).getDate()
 
-  const [currentId, setCurrentId] = useState(0)
-  //currentId: 값
-  //setCurrntId: 값을 바꿔주는 함수
-
-  //handle click Button
+  // Handle click Button
   const handleClick = (index: number): void => {
     setCurrentId(index)
+    const clickedDate =
+      (startDate.getDate() + index) % lastDayOfCurrentMonth || lastDayOfCurrentMonth
+    setSelectedDate(clickedDate)
+    setSelectedYear(startDate.getFullYear())
   }
 
   return (
@@ -45,7 +71,7 @@ const SelectDay: FC = () => {
       <div>
         {daysOfWeek.map((day, index) => {
           const date =
-            (startDate.getDate() + index) % lastDayOfPreviousMonth || lastDayOfPreviousMonth
+            (startDate.getDate() + index) % lastDayOfCurrentMonth || lastDayOfCurrentMonth
           const isCurrentDate = date === currentDate.getDate()
           return (
             <div
