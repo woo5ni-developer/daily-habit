@@ -30,7 +30,8 @@ const SelectDay: FC = () => {
   ]
 
   const initWeeklyCalender = (): void => {
-    const currentDay = new Date('2023-08-01')
+    // const currentDay = new Date('2023-08-01')
+    const currentDay = new Date()
     const { yyyy: theYear, mm: theMonth, dd: theDate, day: theDayOfWeek } = dateInfo(currentDay)
 
     const resultWeeklyDates = daysOfWeek.map((day, i) => {
@@ -40,7 +41,7 @@ const SelectDay: FC = () => {
       // console.log('🚀 : ', theDate, i, theDayOfWeek, theDate + (i - theDayOfWeek))
       const { yyyy, mm, dd, day: id } = dateInfo(resultDay)
 
-      const totalDate = dateFormat({ yyyy, mm, dd, day: id })
+      const totalDate = dateFormat(resultDay)
 
       return {
         id,
@@ -56,13 +57,9 @@ const SelectDay: FC = () => {
   }
 
   const checkEqualToday = (totalDate: string): boolean => {
-    const today = new Date('2023-08-01')
+    const today = new Date()
 
-    const { yyyy, mm, dd, day } = dateInfo(today)
-
-    const resultDate = dateFormat({ yyyy, mm, dd, day })
-
-    return resultDate === totalDate
+    return dateFormat(today) === totalDate
   }
 
   const dateInfo = (targetDate: Date): DateInfoType => ({
@@ -74,9 +71,13 @@ const SelectDay: FC = () => {
     // day: targetDate.getDay() ? currentDay.getDay() - 1 : 6 // 월~일 기준
   })
 
-  const dateFormat = ({ yyyy, mm, dd }: DateInfoType): string => {
+  const dateFormat = (targetDate: Date): string => {
+    const yyyy = targetDate.getFullYear()
+    const mm = targetDate.getMonth() + 1 // month: 1월이 0부터 시작함
+    const dd = targetDate.getDate()
+
     // 앞에 0붙이기
-    return `${yyyy}-${String(mm + 1).length === 1 ? `0${mm + 1}` : mm + 1}-${
+    return `${yyyy}-${String(mm).length === 1 ? `0${mm}` : mm}-${
       String(dd).length === 1 ? `0${dd}` : dd
     }`
   }
