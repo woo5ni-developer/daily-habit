@@ -50,3 +50,10 @@ export interface CurrentWeekType {
     isToday: boolean;
     totalDate: string;
 }
+
+export interface DateInfoType {
+  yyyy: number,
+  mm: number,
+  dd: number,
+  day: number
+}

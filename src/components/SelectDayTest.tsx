@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState } from 'react'
 import { useRecoilValue } from 'recoil'
 import Title from './Title'
 import { habitListState } from '../state/dataState'
-import { CurrentWeekType } from '../lib/type'
+import { CurrentWeekType, DateInfoType } from '../lib/type'
 
 const SelectDay: FC = () => {
   // logic
@@ -30,38 +30,24 @@ const SelectDay: FC = () => {
   ]
 
   const initWeeklyCalender = (): void => {
-    // month: 1월이 0부터 시작함
-    // Sunday - Saturday : 0 - 6
     const currentDay = new Date('2023-08-01')
-    // const currentDay = new Date()
-    const theYear = currentDay.getFullYear()
-    const theMonth = currentDay.getMonth()
-    const theDate = currentDay.getDate()
-    const theDayOfWeek = currentDay.getDay() // 일~월 기준
-    // const theDayOfWeek = currentDay.getDay() ? currentDay.getDay() - 1 : 6 // 월~일 기준
+    const { yyyy: theYear, mm: theMonth, dd: theDate, day: theDayOfWeek } = dateInfo(currentDay)
 
     const resultWeeklyDates = daysOfWeek.map((day, i) => {
       // new Date(year, monthIndex, day);
       // 현재 날짜 기준으로 이번주 일~토 7일 구하기
       const resultDay = new Date(theYear, theMonth, theDate + (i - theDayOfWeek))
       // console.log('🚀 : ', theDate, i, theDayOfWeek, theDate + (i - theDayOfWeek))
-      const year = resultDay.getFullYear()
-      const month: number | string = Number(resultDay.getMonth()) + 1
-      const date: number | string = resultDay.getDate()
-      const dayIndex = resultDay.getDay()
+      const { yyyy, mm, dd, day: id } = dateInfo(resultDay)
 
-      // 앞에 0붙이기
-      const mm = String(month).length === 1 ? '0' + month : month
-      const dd = String(date).length === 1 ? '0' + date : date
-
-      const totalDate = `${year}-${mm}-${dd}`
+      const totalDate = dateFormat({ yyyy, mm, dd, day: id })
 
       return {
-        id: dayIndex,
+        id,
         day,
-        year,
-        month,
-        date,
+        year: yyyy,
+        month: mm + 1,
+        date: dd,
         isToday: checkEqualToday(totalDate),
         totalDate,
       }
@@ -70,18 +56,29 @@ const SelectDay: FC = () => {
   }
 
   const checkEqualToday = (totalDate: string): boolean => {
-    const today = new Date()
+    const today = new Date('2023-08-01')
 
-    const yyyy = today.getFullYear()
-    let mm: number | string = today.getMonth() + 1
-    let dd: number | string = today.getDate()
+    const { yyyy, mm, dd, day } = dateInfo(today)
 
-    mm = String(mm).length === 1 ? '0' + mm : mm
-    dd = String(dd).length === 1 ? '0' + dd : dd
-
-    const resultDate = `${yyyy}-${mm}-${dd}`
+    const resultDate = dateFormat({ yyyy, mm, dd, day })
 
     return resultDate === totalDate
+  }
+
+  const dateInfo = (targetDate: Date): DateInfoType => ({
+    yyyy: targetDate.getFullYear(),
+    mm: targetDate.getMonth(), // month: 1월이 0부터 시작함
+    dd: targetDate.getDate(),
+    // Sunday - Saturday : 0 - 6
+    day: targetDate.getDay(), // 일~월 기준
+    // day: targetDate.getDay() ? currentDay.getDay() - 1 : 6 // 월~일 기준
+  })
+
+  const dateFormat = ({ yyyy, mm, dd }: DateInfoType): string => {
+    // 앞에 0붙이기
+    return `${yyyy}-${String(mm + 1).length === 1 ? `0${mm + 1}` : mm + 1}-${
+      String(dd).length === 1 ? `0${dd}` : dd
+    }`
   }
 
   const initSelectDay = (data: CurrentWeekType[]): void => {
