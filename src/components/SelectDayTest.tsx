@@ -8,7 +8,6 @@ const SelectDay: FC = () => {
   // logic
   const [currentWeek, setCurrentWeek] = useState<CurrentWeekType[]>([])
   const [selectDay, setSelectDay] = useState<CurrentWeekType | null>(null)
-  const [today, setToday] = useState('')
 
   // useRecoilValue
   const habitList = useRecoilValue(habitListState)
@@ -33,9 +32,8 @@ const SelectDay: FC = () => {
   const initWeeklyCalender = (): void => {
     // month: 1월이 0부터 시작함
     // Sunday - Saturday : 0 - 6
-
-    // const currentDay = new Date('2023-09-10')
-    const currentDay = new Date()
+    const currentDay = new Date('2023-08-01')
+    // const currentDay = new Date()
     const theYear = currentDay.getFullYear()
     const theMonth = currentDay.getMonth()
     const theDate = currentDay.getDate()
@@ -56,21 +54,22 @@ const SelectDay: FC = () => {
       const mm = String(month).length === 1 ? '0' + month : month
       const dd = String(date).length === 1 ? '0' + date : date
 
+      const totalDate = `${year}-${mm}-${dd}`
+
       return {
         id: dayIndex,
         day,
         year,
         month,
         date,
-        totalDate: `${year}-${mm}-${dd}`,
+        isToday: checkEqualToday(totalDate),
+        totalDate,
       }
     })
     setCurrentWeek(resultWeeklyDates)
-
-    // 오늘 날짜 세팅하기 (오늘 날짜 체크를 위함)
   }
 
-  const initToday = (): void => {
+  const checkEqualToday = (totalDate: string): boolean => {
     const today = new Date()
 
     const yyyy = today.getFullYear()
@@ -80,32 +79,33 @@ const SelectDay: FC = () => {
     mm = String(mm).length === 1 ? '0' + mm : mm
     dd = String(dd).length === 1 ? '0' + dd : dd
 
-    setToday(`${yyyy}-${mm}-${dd}`)
+    const resultDate = `${yyyy}-${mm}-${dd}`
+
+    return resultDate === totalDate
   }
 
-  const initSelectDay = (): void => {
-    console.log('init select')
+  const initSelectDay = (data: CurrentWeekType[]): void => {
+    const today = data.find((item) => item.isToday)
+    data.length && today && setSelectDay(today)
   }
 
   // Handle click Button
   const handleClick = (data: CurrentWeekType): void => {
-    console.log('🚀 : data==>', data)
     setSelectDay(data)
   }
 
   useEffect(() => {
-    console.log('habitList', habitList)
+    console.log('habitList', habitList.length)
   })
 
   useEffect(() => {
     initWeeklyCalender()
-    initToday()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
-    console.log('selectDay', selectDay)
-  }, [selectDay])
+    initSelectDay(currentWeek)
+  }, [currentWeek])
 
   return (
     <div className="mx-[-4px]">
@@ -120,14 +120,14 @@ const SelectDay: FC = () => {
               {/* 오늘 날짜 표시 */}
               <i
                 className={`absolute block w-[4px] h-[4px] radius-[4px] top-0 left-[18px] ${
-                  data.totalDate === today ? 'bg-dh-green' : ''
+                  data.isToday ? 'bg-dh-green' : ''
                 }`}></i>
               {/* 오늘 날짜 표시 */}
               {/* 사용자 선택시 버튼에 'bg-dh-green' 클래스 붙이기 */}
               <button
-                className={
-                  'w-full h-[40px] rounded-[10px] border border-solid text-[#1E1E1E] font-bold text-[14px]'
-                }
+                className={`w-full h-[40px] rounded-[10px] border border-solid text-[#1E1E1E] font-bold text-[14px] ${
+                  data.id === selectDay?.id ? 'bg-dh-green' : ''
+                }`}
                 onClick={() => handleClick(data)}>
                 {data.day}
               </button>

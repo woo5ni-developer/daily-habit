@@ -47,5 +47,6 @@ export interface CurrentWeekType {
     year: number;
     month: number;
     date: number;
+    isToday: boolean;
     totalDate: string;
 }
