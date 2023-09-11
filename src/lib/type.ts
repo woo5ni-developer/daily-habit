@@ -40,3 +40,20 @@ export interface ButtonFieldProps
     BaseSingleInputFieldProps<Dayjs | null, FieldSection, DateValidationError> {
   setOpen?: React.Dispatch<React.SetStateAction<boolean>>
 }
+
+export interface CurrentWeekType {
+    id: number;
+    day: string;
+    year: number;
+    month: number;
+    date: number;
+    isToday: boolean;
+    totalDate: string;
+}
+
+export interface DateInfoType {
+  yyyy: number,
+  mm: number,
+  dd: number,
+  day: number
+}
