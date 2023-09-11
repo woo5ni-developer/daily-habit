@@ -2,14 +2,15 @@ import React, { FC, useEffect } from 'react'
 import { IconContext } from 'react-icons'
 import { useRecoilValue } from 'recoil'
 import { habitListState } from '../state/dataState'
-import SelectDay from '../components/SelectDay'
+// import SelectDay from '../components/SelectDay'
+import SelectDay from '../components/SelectDayTest'
 import { iconList } from '../data/response'
 
 const Home: FC = () => {
   const habitList = useRecoilValue(habitListState)
 
   useEffect(() => {
-    console.log('habitList', habitList)
+    // console.log('habitList', habitList)
   })
 
   return (
@@ -18,19 +19,19 @@ const Home: FC = () => {
       <p className="text-lg text-dh-black pt-8">Today Habit</p>
       {/* 리스트 */}
       {habitList.length ? (
-        <ul className="mt-3">
+        <ul className="mt-3 overflow-y-scroll max-h-homeSroll">
           {habitList.map((item, idx) => {
             const target = iconList.find((icon) => icon.id === item.icon?.id)
             const iconItem = target ? target.icon : ''
             return (
               <li
                 key={idx}
-                className="pt-4 pb-4 pl-5 pr-5 shadow-[0_2px_11px_3px_rgba(0,0,0,0.06)] rounded-xl flex items-center sibling:mt-2"
+                className="pt-4 pb-4 pl-5 pr-5 rounded-xl flex items-center sibling:mt-2"
                 style={{ background: item.color?.color ?? '' }}>
                 <IconContext.Provider value={{ size: '30px', style: { padding: '3px' } }}>
                   {React.createElement(iconItem)}
                 </IconContext.Provider>
-                <p>{item.title ?? ''}</p>
+                <p className="pl-4 text-lg font-bold">{item.title ?? ''}</p>
               </li>
             )
           })}

@@ -32,6 +32,9 @@ module.exports = {
         7.5: '1.875rem', //30px
         16: '4rem', // 64px
       },
+      maxHeight: {
+        homeSroll: 'calc(100vh - 325px)',
+      },
     },
   },
   plugins: [
