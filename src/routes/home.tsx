@@ -2,8 +2,7 @@ import React, { FC, useEffect } from 'react'
 import { IconContext } from 'react-icons'
 import { useRecoilValue } from 'recoil'
 import { habitListState } from '../state/dataState'
-// import SelectDay from '../components/SelectDay'
-import SelectDay from '../components/SelectDayTest'
+import SelectDay from '../components/SelectDay'
 import { iconList } from '../data/response'
 
 const Home: FC = () => {
