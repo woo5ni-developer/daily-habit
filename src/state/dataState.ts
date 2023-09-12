@@ -1,6 +1,5 @@
 import { atom } from 'recoil'
 import { habitItemType } from '../lib/type'
-import { initialHabitList } from './initialState'
 import { recoilPersist } from 'recoil-persist'
 
 
@@ -8,7 +7,7 @@ const { persistAtom } = recoilPersist()
 
 export const habitListState = atom<habitItemType[]>({
   key: 'habitListState',
-  default: initialHabitList,
+  default: [],
   effects_UNSTABLE: [persistAtom],
 })
 
