@@ -3,7 +3,7 @@ import { useRecoilValue } from 'recoil'
 import Title from './Title'
 import { habitListState } from '../state/dataState'
 
-const SelectDay: FC = () => {
+const HabitWeekTest: FC = () => {
   // 현재 날짜, 요일 배열, 월 이름 배열
   const currentDate = new Date('2023-03-01')
   const daysOfWeek = ['일', '월', '화', '수', '목', '금', '토']
@@ -109,4 +109,4 @@ const SelectDay: FC = () => {
   )
 }
 
-export default SelectDay
+export default HabitWeekTest

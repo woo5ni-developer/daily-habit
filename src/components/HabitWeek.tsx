@@ -1,16 +1,16 @@
 import React, { FC, useEffect, useState } from 'react'
-import { useRecoilValue } from 'recoil'
 import Title from './Title'
-import { habitListState } from '../state/dataState'
 import { CurrentWeekType, DateInfoType } from '../lib/type'
 
-const SelectDay: FC = () => {
+// home으로 전달할 함수 정의
+interface HabitWeekProps {
+  diffDay: (data: CurrentWeekType) => void
+}
+
+const HabitWeek: FC<HabitWeekProps> = ({ diffDay }) => {
   // logic
   const [currentWeek, setCurrentWeek] = useState<CurrentWeekType[]>([])
   const [selectDay, setSelectDay] = useState<CurrentWeekType | null>(null)
-
-  // useRecoilValue
-  const habitList = useRecoilValue(habitListState)
 
   // init 변수
   const daysOfWeek = ['일', '월', '화', '수', '목', '금', '토']
@@ -84,26 +84,34 @@ const SelectDay: FC = () => {
 
   const initSelectDay = (data: CurrentWeekType[]): void => {
     const today = data.find((item) => item.isToday)
-    data.length && today && setSelectDay(today)
+    if (data.length && today) {
+      setSelectDay(today)
+      diffDay(today)
+    }
   }
 
   // Handle click Button
   const handleClick = (data: CurrentWeekType): void => {
     setSelectDay(data)
+    diffDay(data)
   }
 
-  useEffect(() => {
-    console.log('habitList', habitList.length)
-  })
-
+  //초기에 한번
   useEffect(() => {
     initWeeklyCalender()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  // currentWeek가 변경될 때 마다 랜더링
   useEffect(() => {
     initSelectDay(currentWeek)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentWeek])
+
+  // selectDay가 변경될 때 마다 랜더링
+  // useEffect(() => {
+  //   selectDay && diffDay(selectDay)
+  // }, [selectDay, diffDay])
 
   return (
     <div className="mx-[-4px]">
@@ -138,4 +146,4 @@ const SelectDay: FC = () => {
   )
 }
 
-export default SelectDay
+export default HabitWeek
