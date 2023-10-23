@@ -42,13 +42,13 @@ export interface ButtonFieldProps
 }
 
 export interface CurrentWeekType {
-    id: number;
-    day: string;
-    year: number;
-    month: number;
-    date: number;
-    isToday: boolean;
-    totalDate: string;
+  id: number
+  day: string
+  year: number
+  month: number
+  date: number
+  isToday: boolean
+  totalDate: string
 }
 
 export interface DateInfoType {
