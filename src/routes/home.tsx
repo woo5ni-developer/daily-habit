@@ -59,7 +59,7 @@ const Home: FC = () => {
           </ul>{' '}
         </>
       ) : (
-        <div className="absolute w-full top-1/2 left-1/2 transform -translate-x-1/2 translate-y-1/2">
+        <div className="absolute w-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <img src="./images/bg/bg-home-habit.svg" alt="" className="mx-auto" />
           <p className="text-dh-gray text-center pt-8">
             No Habit.
