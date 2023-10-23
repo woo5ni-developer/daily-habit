@@ -8,7 +8,7 @@ const { persistAtom } = recoilPersist()
 
 export const habitListState = atom<habitItemType[]>({
   key: 'habitListState',
-  default: initialHabitList,
+  default: [],
   effects_UNSTABLE: [persistAtom],
 })
 
