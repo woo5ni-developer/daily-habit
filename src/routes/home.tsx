@@ -1,10 +1,11 @@
 import React, { FC, useEffect, useState } from 'react'
-import { IconContext } from 'react-icons'
+
 import { useRecoilValue } from 'recoil'
 import { habitListState } from '../state/dataState'
 import HabitWeek from '../components/HabitWeek'
 import { iconList } from '../data/response'
 import { CurrentWeekType, habitItemType } from '../lib/type'
+import HabitItem from '../components/HabitItem'
 
 const Home: FC = () => {
   const habitList = useRecoilValue(habitListState)
@@ -43,18 +44,10 @@ const Home: FC = () => {
           <ul className="mt-3 overflow-y-scroll max-h-homeSroll">
             {filterHabitList.map((item, idx) => {
               const target = iconList.find((icon) => icon.id === item.icon?.id)
+              console.log('target', target)
               const iconItem = target ? target.icon : ''
-              return (
-                <li
-                  key={idx}
-                  className="pt-4 pb-4 pl-5 pr-5 rounded-xl flex items-center sibling:mt-2"
-                  style={{ background: item.color?.color ?? '' }}>
-                  <IconContext.Provider value={{ size: '30px', style: { padding: '3px' } }}>
-                    {React.createElement(iconItem)}
-                  </IconContext.Provider>
-                  <p className="pl-4 text-lg font-bold">{item.title ?? ''}</p>
-                </li>
-              )
+              console.log('iconItem', iconItem)
+              return <HabitItem key={idx} habit={item} iconItem={iconItem} />
             })}
           </ul>{' '}
         </>
