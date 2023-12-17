@@ -9,10 +9,12 @@
     "@mui/lab": "^5.0.0-alpha.92",
     "@mui/material": "^5.9.2",
     "@mui/x-date-pickers-pro": "^6.2.0",
+    "@react-spring/web": "^9.7.3",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
+    "@types/lodash": "^4.14.202",
     "@types/node": "^16.11.46",
     "@types/react": "^18.0.15",
     "@types/react-copy-to-clipboard": "^5.0.4",
@@ -59,6 +61,7 @@
     ]
   },
   "devDependencies": {
+    "@types/lodash-es": "^4.17.12",
     "@types/lodash.clamp": "^4.0.9",
     "@types/styled-components": "^5.1.26",
     "autoprefixer": "^10.4.13",

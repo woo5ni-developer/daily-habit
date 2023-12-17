@@ -6,6 +6,7 @@ import Set from './routes/set'
 import Tracker from './routes/tracker'
 import Stats from './routes/stats'
 import Setting from './routes/setting'
+import Test from './routes/test'
 
 
 const App: FC = () => {
@@ -18,6 +19,8 @@ const App: FC = () => {
           <Route path="/tracker" element={<Tracker />} />
           <Route path="/stats" element={<Stats />} />
           <Route path="/setting" element={<Setting />} />
+
+          <Route path="/test" element={<Test />} />
         </Routes>
       </Layout>
     </BrowserRouter>
