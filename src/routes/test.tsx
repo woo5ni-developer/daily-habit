@@ -4,7 +4,10 @@ import DraggableList from '../components/DraggableList'
 const Test: FC = () => {
   return (
     <div className="flex fill center">
-      <DraggableList items={'Lorem ipsum dolor sit'.split(' ')} />
+      <DraggableList items={'Lorem'.split(' ')} />
+      <div>
+        <button type='button'>edit</button>
+      </div>
     </div>
   )
 }
