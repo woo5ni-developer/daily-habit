@@ -92,12 +92,9 @@ const DateRangePicker: FC<DateRangePickerProps> = ({
   }
 
   const handleError = (error: DateValidationError): void => {
-    console.log('🚀 : handleError==>', error)
-    // console.log('🚀 : value==>', value)
     if (error === 'minDate') {
       // 에러 있는 경우
       isHabitTermValid(false)
-      console.log('error!!')
       return
     }
 
