@@ -10,6 +10,12 @@ export const habitListState = atom<habitItemType[]>({
   effects_UNSTABLE: [persistAtom],
 })
 
+export const selectedHabitState = atom<habitItemType | null>({
+  key: 'selectedHabitState',
+  default: null,
+  effects_UNSTABLE: [persistAtom],
+})
+
 export const dateFormatState = atom<string>({
   key: 'dateFormatState',
   default: 'YYYY-MM-DD',
